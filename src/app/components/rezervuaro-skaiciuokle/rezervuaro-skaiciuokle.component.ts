@@ -19,7 +19,7 @@ export class RezervuaroSkaiciuokleComponent implements OnInit {
 
   public skaiciuoti(){
     if(this.rezervuaras != null && this.pildymoGreitis != null && this.pildymoLaikas != null) {
-    this.rezervuaroUzpildymas = (this.pildymoGreitis * this.pildymoLaikas) * 100 / this.rezervuaras;
+    this.rezervuaroUzpildymas = Math.round((this.pildymoGreitis * this.pildymoLaikas) * 100 / this.rezervuaras);
   }}
 
 }
