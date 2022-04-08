@@ -1,0 +1,33 @@
+<div class="row d-flex justify-content-center">
+  <div class="col-md-6">
+    <div class="card">
+      <div class="card-header">Rezervuaro pildymo skaičiuoklė</div>
+      <div class="card-body">
+        <div class="mb-3">
+          <label for="" class="form-label">Rezervuaro talpa (l)</label>
+          <input class="form-control" type="number" name="rezervuaras" id="rezervuaras" [(ngModel)]="rezervuaras"/>
+          <br />
+          <label for="" class="form-label">Rezervuaro pildymo greitis (l/val)</label>
+          <input class="form-control" type="number" name="greitis" id="greitis" [(ngModel)]="pildymoGreitis"/>
+          <br />
+          <label for="" class="form-label">Kiek laiko bus pildomas rezervuaras? (val.)</label>
+          <input class="form-control" type="number" name="laikas" id="laikas" [(ngModel)]="pildymoLaikas"/>
+        </div>
+      </div>
+      <button type="button" class="btn btn-primary btn-block m-3 mt-0" (click)="skaiciuoti()" [disabled]="rezervuaras == null || pildymoGreitis == null || pildymoLaikas == null">Skaičiuoti</button>
+    </div>
+
+    <div class="card mt-3" *ngIf="rezervuaroUzpildymas!=0 && rezervuaroUzpildymas!=null">
+      <div class="card-header">Rezultatai</div>
+      <div class="card-body">
+        <div>Rezervuaras bus užpildytas: {{rezervuaroUzpildymas}}% rezervuaro talpos.</div>
+      </div>
+      <div class="alert alert-warning m-2" role="alert" *ngIf="rezervuaroUzpildymas>=80 && rezervuaroUzpildymas < 100">
+        Rezervuaro talpa kritiškai pripildyta!
+      </div>
+      <div class="alert alert-danger m-2" role="alert" *ngIf="rezervuaroUzpildymas>=100">
+        Rezervuaras yra perpildytas!
+      </div>
+    </div>
+  </div>
+</div>
